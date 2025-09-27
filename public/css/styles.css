@@ -1,0 +1,99 @@
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+
+.alojamiento-card {
+    transition: transform 0.3s ease;
+}
+
+.alojamiento-card:hover {
+    transform: translateY(-5px);
+}
+
+.alojamiento-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Estilos para formularios */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para mensajes de alerta */
+.alert {
+    margin-bottom: 20px;
+}
+
+/* Botón destacado para login y registro */
+.btn-destacado {
+    background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.15rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.15);
+    transition: background 0.3s, transform 0.2s;
+    padding: 12px 0;
+}
+.btn-destacado:hover, .btn-destacado:focus {
+    background: linear-gradient(90deg, #0056b3 0%, #007bff 100%);
+    color: #fff;
+    transform: scale(1.04);
+    text-decoration: none;
+}
+
+/* Enlace destacado para login y registro */
+.enlace-destacado {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+.enlace-destacado:hover, .enlace-destacado:focus {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Sección hero para auth */
+.auth-hero {
+    background: linear-gradient(180deg, rgba(2,6,23,0.03), rgba(255,255,255,0));
+    min-height: calc(100vh - 140px);
+    display: flex;
+    align-items: center;
+}
+.auth-hero .card {
+    border: 0;
+}
+.auth-hero .card-title {
+    font-weight: 700;
+}
+.auth-hero .form-control-lg {
+    border-radius: 8px;
+}
+
+
+@media (max-width: 576px) {
+    .auth-hero {
+        min-height: auto;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .auth-hero .card-body {
+        padding: 1.25rem;
+    }
+    .auth-hero .form-control-lg {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+}
