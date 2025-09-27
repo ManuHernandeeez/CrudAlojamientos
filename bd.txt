@@ -1,0 +1,65 @@
+CREATE DATABASE IF NOT EXISTS crud_alojamientos;
+USE crud_alojamientos;
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    tipo_usuario ENUM('usuario', 'admin') DEFAULT 'usuario',
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE alojamientos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(200) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10,2) NOT NULL,
+    ubicacion VARCHAR(200) NOT NULL,
+    tipo_alojamiento ENUM('hotel', 'apartamento', 'casa', 'hostal', 'resort') NOT NULL,
+    capacidad INT NOT NULL,
+    imagen_url VARCHAR(500),
+    servicios TEXT,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    activo BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE alojamientos_usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    alojamiento_id INT NOT NULL,
+    fecha_seleccion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (alojamiento_id) REFERENCES alojamientos(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_usuario_alojamiento (usuario_id, alojamiento_id)
+);
+
+-- Usuario administrador
+INSERT INTO usuarios (nombre, email, password, tipo_usuario) VALUES
+('Administrador', 'admin@alojamientos.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
+
+INSERT INTO alojamientos (nombre, descripcion, precio, ubicacion, tipo_alojamiento, capacidad, imagen_url, servicios) VALUES
+('Hotel Costa del Sol', 'Un hermoso hotel frente al mar con todas las comodidades. Perfecto para unas vacaciones relajantes con vista al océano.', 175.00, 'Costa del Sol, La Paz', 'hotel', 2, 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500', 'WiFi, Piscina, Spa, Restaurante, Gimnasio, Estacionamiento'),
+('Apartamento Moderno Escalón', 'Apartamento moderno en el corazón de la ciudad. Ideal para viajeros de negocios y turistas que buscan comodidad y ubicación.', 95.00, 'Colonia Escalón, San Salvador', 'apartamento', 4, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500', 'WiFi, Cocina equipada, Aire acondicionado, Lavadora, TV'),
+('Casa de Campo Los Naranjos', 'Encantadora casa de campo en la Ruta de las Flores. Perfecta para desconectar y disfrutar de la naturaleza en familia.', 130.00, 'Juayúa, Sonsonate', 'casa', 6, 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500', 'Chimenea, Jardín, Barbacoa, WiFi, Estacionamiento'),
+('Hostal El Tunco', 'Hostal económico y acogedor para surfistas y mochileros. Ambiente joven y social con excelente ubicación frente a la playa.', 30.00, 'Playa El Tunco, La Libertad', 'hostal', 1, 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=500', 'WiFi, Cocina compartida, Lavandería, Terraza, Lockers'),
+('Resort de Playa Decameron', 'Resort de lujo con todo incluido. Experiencia premium con todos los servicios y actividades acuáticas.', 350.00, 'Salinitas, Sonsonate', 'resort', 2, 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500', 'Spa completo, Piscinas, Restaurantes gourmet, Actividades acuáticas'),
+('Hotel Boutique Santa Ana', 'Hotel boutique en el centro histórico de Santa Ana. Combina elegancia clásica con comodidades modernas.', 160.00, 'Santa Ana', 'hotel', 2, 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500', 'WiFi, Restaurante, Bar, Concierge, Servicio de habitaciones'),
+('Apartamento con Vista al Lago', 'Apartamento con vista panorámica al Lago de Coatepeque. Balcón privado y decoración moderna.', 110.00, 'Lago de Coatepeque, Santa Ana', 'apartamento', 3, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500', 'WiFi, Balcón, Cocina, Aire acondicionado, TV Smart'),
+('Casa Colonial Suchitoto', 'Hermosa casa colonial en el pueblo de Suchitoto. Arquitectura tradicional con comodidades modernas.', 125.00, 'Suchitoto, Cuscatlán', 'casa', 5, 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500', 'Patio interior, WiFi, Cocina, Aire acondicionado, Estacionamiento'),
+('Hostal Artístico San Jacinto', 'Hostal con decoración artística única en un barrio bohemio. Cada habitación tiene un tema diferente.', 40.00, 'Barrio San Jacinto, San Salvador', 'hostal', 1, 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500', 'WiFi, Cocina compartida, Galería de arte, Terraza, Bicicletas'),
+('Hotel de Negocios San Benito', 'Hotel diseñado para viajeros de negocios. Ubicado en la Zona Rosa con todas las comodidades.', 150.00, 'Colonia San Benito, San Salvador', 'hotel', 1, 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=500', 'WiFi empresarial, Centro de negocios, Gimnasio, Restaurante, Estacionamiento'),
+('Loft Industrial Santa Tecla', 'Loft en edificio renovado en el Paseo El Carmen. Diseño moderno y espacios amplios.', 85.00, 'Santa Tecla, La Libertad', 'apartamento', 2, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500', 'WiFi, Cocina moderna, Aire acondicionado, Lavadora, TV');
+
+INSERT INTO usuarios (nombre, email, password, tipo_usuario) VALUES
+('Juan', 'juan@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'usuario'),
+('María', 'maria@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'usuario'),
+('Carlos', 'carlos@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'usuario');
+
+INSERT INTO alojamientos_usuario (usuario_id, alojamiento_id) VALUES
+(2, 1),
+(2, 3),
+(3, 2),
+(3, 5),
+(4, 4),
+(4, 6);
