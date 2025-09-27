@@ -1,66 +1,74 @@
-# \# CRUD Alojamientos
-
-# 
+# CRUD Alojamientos
 
 # Este proyecto es una aplicación web simple desarrollada en PHP con base de datos MySQL que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre alojamientos.
 
 # 
 
-# \## Funcionalidades
+# Funcionalidades
 
-# 1\. Landing Page de Alojamientos  
+# Landing Page de Alojamientos
 
-# &nbsp;  Muestra todos los alojamientos registrados en la base de datos.
-
-# 
-
-# 2\. Registro e Inicio de Sesión  
-
-# &nbsp;  Los usuarios pueden crear una cuenta y acceder para ver sus alojamientos.
+# Muestra todos los alojamientos registrados en la base de datos.
 
 # 
 
-# 3\. Cuenta de Usuario  
+# Registro e Inicio de Sesión
 
-# &nbsp;  Cada usuario puede seleccionar alojamientos, los cuales se reflejan en su perfil, y eliminarlos si lo desea.
-
-# 
-
-# 4\. Administrador  
-
-# &nbsp;  El administrador puede agregar alojamientos a la base de datos.
+# Los usuarios pueden crear una cuenta y acceder para ver sus alojamientos.
 
 # 
 
-# \## Usuarios de prueba
+# Cuenta de Usuario
 
-# \- Usuario:  
-
-# &nbsp; - Correo: `juan@email.com`  
-
-# &nbsp; - Contraseña: `password`
+# Cada usuario puede seleccionar alojamientos, los cuales se reflejan en su perfil, y eliminarlos si lo desea.
 
 # 
 
-# \- Administrador:  
+# Administrador
 
-# &nbsp; - Correo: `admin@alojamientos.com`  
-
-# &nbsp; - Contraseña: `password`
+# El administrador puede agregar alojamientos a la base de datos.
 
 # 
 
-# \## Tecnologías
+# Usuarios de prueba
 
-# \- PHP  
-
-# \- MySQL  
-
-# \- HTML  
-
-# \- CSS  
-
-
+# Usuario:
 
 # 
+
+# Correo: juan@email.com
+
+# 
+
+# Contraseña: password
+
+# 
+
+# Administrador:
+
+# 
+
+# Correo: admin@alojamientos.com
+
+# 
+
+# Contraseña: password
+
+# 
+
+# Tecnologías
+
+# PHP
+
+# 
+
+# MySQL
+
+# 
+
+# HTML
+
+# 
+
+# CSS
 
